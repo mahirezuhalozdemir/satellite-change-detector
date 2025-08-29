@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Mask Oluştur</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+.card {
+    width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    text-align: center;
+}
+.card img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+.btn {
+    display : block;
+    margin : 20px auto;
+    color : white;
+    background-color: #124170;
+}
+
+.project-title{
+    margin: 10px auto; /* üst/alt: 40px, sağ/sol: otomatik (ortalar) */
+    padding: 10px;     /* kutu içi boşluk */
+    max-width: 1200px;  /* çok geniş olmasın */
+    color: #124170;
+    background-color: #ffffff;
+    text-align: left;
+    border-radius: 10px; /* köşeler hafif yuvarlak olsun istersen */
+}
+
+</style>
+</head>
+<body>
+
+<div class="project-title" >
+    <h5 >UYDU GÖRÜNTÜLERİNDEN İKİ FARKLI ZAMANDA ALINAN GÖRSELLER ÜZERİNDE UNET MODELİ İLE FARK TESPİTİ</h5> <br><br>
+    <p>Bu proje, uydu görüntüleri üzerinde fark tespiti (change detection) yapmayı amaçlamaktadır. Farklı zamanlarda elde edilen uydu görüntülerinin karşılaştırılması, çevresel değişimlerin (örneğin, şehirleşme, tarımsal faaliyetler, orman kaybı veya doğal afetlerin etkileri) izlenmesi için kritik öneme sahiptir.
+        Projede, görüntü işleme ve derin öğrenme tabanlı bir yaklaşım olan U-Net mimarisi kullanılarak pikseller bazında değişiklikler belirlenmektedir. U-Net modeli, özellikle segmentasyon görevlerinde yüksek doğruluk sağlamasıyla bilinir ve bu sayede iki farklı zaman diliminde alınan görüntüler arasındaki farkların ayrıntılı bir şekilde ortaya çıkarılması mümkün hale gelmektedir.
+        <br><br><b>Bu çalışma ile: </b> <br>
+        <ul>
+        <li>Görseller üzerinde otomatik fark analizi yapılması,</li> <br>
+        <li>Değişim bölgelerinin hızlı ve doğru şekilde tespit edilmesi, </li><br>
+        <li>Uzaktan algılama verilerinin sürdürülebilirlik, şehir planlama ve afet yönetimi gibi alanlarda etkin kullanımının sağlanması hedeflenmektedir.</li>
+        </ul>
+    </p>
+</div>
+
+<form action="/createmask" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <h3 for="file1">Uydu Görüntüsü 1</h3><br>
+        <input type="file" id="file1" name="file1" accept=".jpg,.jpeg,.png" required>
+        <img id="preview1" src="#" alt="Önizleme 1" style="display:none;">
+    </div>
+
+    <div class="card">
+        <h3 for="file2">Uydu Görüntüsü 2</h3><br>
+        <input type="file" id="file2" name="file2" accept=".jpg,.jpeg,.png" required>
+        <img id="preview2" src="#" alt="Önizleme 2" style="display:none;">
+    </div>
+
+    <button type="submit" class="btn">FARK BUL</button>
+</form>
+
+<!-- JS ile önizleme -->
+<script>
+function previewImage(input, previewId){
+    const file = input.files[0];
+    const preview = document.getElementById(previewId);
+    if(file){
+        const reader = new FileReader();
+        reader.onload = function(e){
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        }
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "#";
+        preview.style.display = "none";
+    }
+}
+
+document.getElementById("file1").addEventListener("change", function(){
+    previewImage(this,"preview1");
+});
+document.getElementById("file2").addEventListener("change", function(){
+    previewImage(this,"preview2");
+});
+</script>
+
+</body>
+</html>

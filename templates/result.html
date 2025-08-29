@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Mask Oluştur</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+.card {
+    width : %100;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    text-align: center;
+}
+.card img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">YÜKLENEN UYDU GÖRSELLERİNE GÖRE DEĞİŞEN BÖLGELERİN UNET MODELİ YARDIMIYLA GÖRSELLEŞTİRİLMESİ</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+             <label>IMG 1</label>
+             <img src="{{ img1 }}" alt="IMG 1" />
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+             <label>IMG 2</label>
+           <img src="{{ img2 }}" alt="IMG 2" />
+        </div>
+    </div>
+</div>
+
+<!--MASKELER************************************************-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+             <label>MASK 1</label>
+             <img src="{{ mask1 }}" alt="MASK 1" />
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <label>MASK 2</label>
+            <img src="{{ mask2 }}" alt="MASK 2" />
+        </div>
+    </div>
+</div>
+<!--MASKELER************************************************-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+             <label>DIFF IMG</label>
+             <img src="{{ diff_image }}" alt="DIFF IMG " />
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <label>DIFF MASK</label>
+            <img src="{{ diff_mask }}" alt="DIFF MASK" />
+        </div>
+    </div>
+</div>
+
+
+<script>
+</script>
+
+</body>
+</html>
