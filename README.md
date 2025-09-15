@@ -5,32 +5,34 @@ A Python-based system that detects and visualizes meaningful changes between two
 ---
 
 ## 📌 Features  
-- Compare two satellite images and highlight significant changes  
-- Image preprocessing (resizing, denoising, normalization)  
+- Upload two satellite images and detect differences  
+- Image preprocessing (resize, denoise, normalize)  
 - Change detection using image differencing + AI-based methods  
-- Visualization of detected change regions  
-- Modular and extensible Python codebase  
+- Web interface built with Flask (upload & results page)  
+- Visualization of detected change regions 
 
 ---
 
 ## 🛠️ Technologies  
 - **Python 3.9+**  
+- **Flask** – web framework  
 - **OpenCV** – image processing  
 - **NumPy / Pandas** – data handling  
-- **Matplotlib / Seaborn** – visualization  
-- **Scikit-learn / PyTorch / TensorFlow** (depending on chosen AI method)  
+- **Matplotlib** – visualization  
+- **Scikit-learn / PyTorch / TensorFlow**
 
 ---
 
 ## 📂 Project Structure  
 ```
 satellite-change-detector/
-│── data/ # Sample input images
-│── notebooks/ # Jupyter notebooks for experiments
-│── src/ # Source code
-│ ├── preprocess.py # Preprocessing steps
-│ ├── detect.py # Change detection logic
-│ ├── visualize.py # Visualization of results
+│── pycache/ # Python cache files
+│── dataset/ # Example input satellite images
+│── src/ # Core image processing & detection logic
+│── static/ # CSS, JS, and output result images
+│── templates/ # HTML templates (Flask frontend)
+│── uploads/ # User-uploaded images
+│── app.py # Main Flask application
 │── requirements.txt # Dependencies
 │── README.md # Project documentation
 ```
@@ -43,6 +45,15 @@ satellite-change-detector/
    ```bash
    git clone https://github.com/yourusername/satellite-change-detector.git
    cd satellite-change-detector
+1. Create a virtual environment & install dependencies: 
+   ```bash
+
+   python -m venv venv
+   source venv/bin/activate   # (Linux/Mac)
+   venv\Scripts\activate      # (Windows)
+
+   pip install -r requirements.txt
+
 
 ---
 
